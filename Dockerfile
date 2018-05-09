@@ -41,7 +41,7 @@ COPY ./app/package.json ./
 # Install npm modules for the application
 # Install dev deps so we can build app
 RUN JOBS=MAX npm install --unsafe-perm \
-&& npm cache clean && node_modules/.bin/electron-rebuild
+&& node_modules/.bin/electron-rebuild
 
 # Move app to filesystem
 COPY ./app ./
