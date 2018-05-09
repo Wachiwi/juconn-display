@@ -24,10 +24,10 @@
     "js"
   ],
   "dependencies": {
-    "electron": "^1.4.15",
-    "electron-rebuild": "^1.5.7",
-    "react": "15.4.2",
-    "react-dom": "15.4.2"
+    "electron": "^2.0.0",
+    "electron-rebuild": "^1.7.3",
+    "react": "16.3.2",
+    "react-dom": "16.3.2"
   },
   "author": "Carlo Maria Curinga",
   "license": "Apache-2.0",
@@ -39,9 +39,9 @@
     "strict": true
   },
   "devDependencies": {
-    "eslint": "^3.14.1",
-    "eslint-config-airbnb-base": "^11.0.1",
-    "eslint-plugin-import": "^2.2.0",
-    "react-scripts": "0.8.5"
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.11.0",
+    "react-scripts": "1.1.4"
   }
 }
