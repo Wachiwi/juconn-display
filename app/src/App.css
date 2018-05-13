@@ -1,24 +1,98 @@
-.App {
-  text-align: center;
+* {
+  color: #313131;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.app {
+  height: 100vh;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
+.white-background {
+  background-color: white
+}
+
+.bright-background{
+  background-color: rgb(239,244,247);
+}
+
+.dark-background {
+  background-color: rgb(52,67,88);
+}
+
+.dark-background * {
   color: white;
 }
 
-.App-intro {
-  font-size: large;
+.dark-background.yellow {
+  color: rgb(233,142,40);
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.app-header {
+  padding: .5em;
+  max-height: 75px;
 }
+
+.app-header * {
+  display: inline;
+}
+
+.app-header .headline {
+  height: 100%;
+}
+
+.app-header .headline h2 {
+  height: 100%;
+  vertical-align: middle;
+}
+
+.cards {
+  padding: 1.5em;
+}
+
+.card {
+  height: 5em;
+  width:  5em;
+  border-radius: 1em;
+  box-shadow: 0 0 5px rgba(0,0,0,0.15);
+  display: inline-flex;
+  margin: 2em;
+  padding: 1em;
+}
+
+.card.active .card-header {
+  flex-direction: row;
+}
+
+.card .icon img,
+.card .info img{
+  width: 3em;
+  height: 3em;
+}
+
+.card .icon img {
+  margin-left: -0.5em;
+  margin-top: -0.5em;
+}
+
+.card .info img {
+  margin-right: -0.5em;
+  margin-top: -0.5em;
+}
+
+.card.active .card-header,
+.card.active .card-header .card-title,
+.card.active .card-header .card-subtitle {
+  color: rgb(233,142,40);
+}
+
+.card.active .card-header,
+.card.active .card-header .card-title {
+  font-weight: 900;
+}
+.card.active .card-header .card-subtitle {
+  font-weight: 400;
+}
+
+
+
+
+

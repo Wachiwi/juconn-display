@@ -1,5 +1,5 @@
 {
-  "name": "resin-electronjs",
+  "name": "smarthome-display",
   "version": "0.2.0",
   "description": "electronJS-based resin application",
   "main": "main.js",
@@ -13,26 +13,11 @@
     "eject": "react-scripts eject",
     "electron": "URL_LAUNCHER_NODE=1 electron ."
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/resin-io/resin-electronjs.git"
-  },
-  "keywords": [
-    "resin",
-    "io",
-    "electron",
-    "js"
-  ],
   "dependencies": {
     "electron": "^2.0.0",
     "electron-rebuild": "^1.7.3",
     "react": "16.3.2",
     "react-dom": "16.3.2"
-  },
-  "author": "Carlo Maria Curinga",
-  "license": "Apache-2.0",
-  "bugs": {
-    "url": "https://github.com/resin-io/resin-electronjs/issues"
   },
   "jshintConfig": {
     "esversion": 6,
