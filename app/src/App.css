@@ -2,8 +2,18 @@
   color: #313131;
 }
 
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  height: 100vh;
+}
+
+
 .app {
   height: 100vh;
+  display: grid;
+  grid-template-rows: 90px auto;
 }
 
 .white-background {
@@ -22,21 +32,42 @@
   color: white;
 }
 
-.dark-background.yellow {
+.yellow {
   color: rgb(233,142,40);
 }
 
 .app-header {
   padding: .5em;
   max-height: 75px;
+  display: grid;
+  grid-template-columns: 200px auto auto 5em;
+  align-items: center;
+}
+
+a {
+  text-decoration: none;
+  text-align: right;
+}
+
+#additional-options {
+  align-self: center;
+  grid-column: 4;
+}
+
+#additional-options a {
+  margin: .3em;
+}
+
+.has-centered-text {
+  text-align: center;
+
+}
+.has-middle-aligned-text {
+  vertical-align: middle;
 }
 
 .app-header * {
   display: inline;
-}
-
-.app-header .headline {
-  height: 100%;
 }
 
 .app-header .headline h2 {
@@ -46,6 +77,9 @@
 
 .cards {
   padding: 1.5em;
+  display: grid;
+  grid-template-columns: 11.5rem 11.5rem 11.5rem 11.5rem;
+  grid-template-rows: 10rem 10rem;
 }
 
 .card {
@@ -53,19 +87,36 @@
   width:  5em;
   border-radius: 1em;
   box-shadow: 0 0 5px rgba(0,0,0,0.15);
-  display: inline-flex;
   margin: 2em;
   padding: 1em;
+  display: grid;
+  grid-template-rows: 40% 1fr 40%;
+  grid-template-columns: 40% 1fr 40%;
 }
 
-.card.active .card-header {
-  flex-direction: row;
+.card .icon {
+  grid-column: 1;
+  grid-row: 1;
 }
 
-.card .icon img,
-.card .info img{
-  width: 3em;
-  height: 3em;
+.card .info {
+  grid-column: 3;
+  grid-row: 1;
+  align-content: right;
+  text-align: right;
+}
+
+.card .card-header {
+  grid-row: 3;
+}
+
+.card .icon i,
+.card .info i{
+  color: rgba(49,49,49, 0.7);
+}
+
+.card.active .icon i {
+  color: rgb(233,142,40);
 }
 
 .card .icon img {
@@ -79,18 +130,23 @@
 }
 
 .card.active .card-header,
-.card.active .card-header .card-title,
-.card.active .card-header .card-subtitle {
+.card.active .card-header .card-title {
   color: rgb(233,142,40);
 }
 
-.card.active .card-header,
-.card.active .card-header .card-title {
+.card.active .card-header .card-subtitle {
+  color: rgba(233,142,40, 0.6);
+}
+
+.card .card-header,
+.card .card-header .card-title {
   font-weight: 900;
 }
-.card.active .card-header .card-subtitle {
+.card .card-header .card-subtitle {
   font-weight: 400;
+  color: rgba(49,49,49, 0.5);
 }
+
 
 
 

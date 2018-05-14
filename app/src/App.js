@@ -1,18 +1,12 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 
-import logo from './logo.png';
-import lampActive from './assets/LightbulbOn.svg'
-import lampInactive from './assets/LightbulbOff.svg'
-import infoActive from './assets/infoActive.svg'
-import infoInactive from './assets/infoInactive.svg'
+import logo from './assets/img/logo.png';
 
 import './App.css';
 
 // https://github.com/electron/electron/issues/7300
 // We don't want to bundle electron in the webpack process so we use it's globally exposed require method.
-const electron = window.require('electron');
-const fs = electron.remote.require('fs');
-var files = fs.readdirSync('./');
+// const electron = window.require('electron');
 
 class App extends Component {
 
@@ -22,15 +16,30 @@ class App extends Component {
       elements: [{
         icon: "None",
         name: "Test",
-        description:"Test123",
-        info:"i",
+        description: "Test123",
+        info: "i",
         active: true
       }, {
         icon: "None",
         name: "Test",
-        description:"Test123",
-        info:"i",
-      }],
+        description: "Test123",
+        info: "i",
+      }, {
+        icon: "None",
+        name: "Test",
+        description: "Test123",
+        info: "i",
+      }, {
+        icon: "None",
+        name: "Test",
+        description: "Test123",
+        info: "i",
+      }, {
+          icon: "None",
+          name: "Test",
+          description: "Test123",
+          info: "i",
+        }],
     };
   }
 
@@ -38,30 +47,41 @@ class App extends Component {
     return (
       <div className="app bright-background">
         <div className="app-header dark-background">
-          <img src={logo} className="App-logo" alt="logo" />
-          <div className="headline">
+          <div>
+            <img src={logo} className="App-logo" alt="logo"/>
+          </div>
+          <div id="room-breadcrumb" className="has-centered-text">
             <h2>Raum 2-U08</h2>
           </div>
-          <i className="fa fa-heart"></i>
+          <div id="additional-options">
+            <a href="#">
+              <i className='fas fa-2x fa-cogs'/>
+            </a>
+          </div>
         </div>
         <div className="cards">
-                    {
+          {
             this.state.elements.map((el) => {
               return (
                 <div className={`card white-background ${el.active ? 'active' : ''}`}>
                   <div className="icon">
-                    <img src={el.active? lampActive : lampInactive} />
+                    {el.active ? (
+                      <i className="fas fa-2x fa-lightbulb yellow"/>
+                    ) : (
+                      <i className="far fa-2x fa-lightbulb"/>
+                    )}
                   </div>
                   <div className="info">
-                    <img src={el.active? infoActive : infoInactive} />{el.info}
+                    <i className={`fas fa-2x fa-info-circle ${el.active ? 'yellow' : ''}`}/>
                   </div>
                   <div className="card-header">
-                    <div class="card-title">
+                    <div className="card-title">
                       {el.name}
                     </div>
                     <div className="card-subtitle">
                       {el.description}
                     </div>
+
                   </div>
                 </div>
               );
