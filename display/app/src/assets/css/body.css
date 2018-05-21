@@ -1,0 +1,15 @@
+.app-body {
+  display: grid;
+  grid-template-columns: 316px auto;
+}
+
+.app-body .scenes {
+  grid-column: 1;
+  margin-left: 16px;
+}
+
+.app-body .devices {
+  grid-column: 2;
+  background-image: url('../img/bg2.jpg');
+  background-size: contain;
+}

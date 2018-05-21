@@ -1,5 +1,6 @@
 @import "assets/css/base.css";
 @import "assets/css/header.css";
+@import "assets/css/body.css";
 @import "assets/css/footer.css";
 
 body {
@@ -14,82 +15,3 @@ body {
   display: grid;
   grid-template-rows: 77px auto 40px;
 }
-
-.cards {
-  padding: 1.5em;
-  display: grid;
-  grid-template-columns: repeat(4, 11.5rem);
-  grid-template-rows: 10rem 10rem;
-  align-items: center;
-}
-
-.card {
-  height: 7em;
-  width:  7em;
-  border-radius: 1em;
-  box-shadow: 0 0 5px rgba(0,0,0,0.15);
-  margin: .5em;
-  padding: 1em;
-  display: grid;
-  grid-template-rows: 40% 1fr 40%;
-  grid-template-columns: 40% 1fr 40%;
-}
-
-.card .icon {
-  grid-column: 1;
-  grid-row: 1;
-}
-
-.card .info {
-  grid-column: 3;
-  grid-row: 1;
-  align-content: right;
-  text-align: right;
-}
-
-.card .card-header {
-  grid-row: 3;
-}
-
-.card .icon i,
-.card .info i{
-  color: rgba(49,49,49, 0.7);
-}
-
-.card.active .icon i {
-  color: rgb(233,142,40);
-}
-
-.card .icon img {
-  margin-left: -0.5em;
-  margin-top: -0.5em;
-}
-
-.card .info img {
-  margin-right: -0.5em;
-  margin-top: -0.5em;
-}
-
-.card.active .card-header,
-.card.active .card-header .card-title {
-  color: rgb(233,142,40);
-}
-
-.card.active .card-header .card-subtitle {
-  color: rgba(233,142,40, 0.6);
-}
-
-.card .card-header,
-.card .card-header .card-title {
-  font-weight: 900;
-}
-.card .card-header .card-subtitle {
-  font-weight: 400;
-  color: rgba(49,49,49, 0.5);
-}
-
-
-
-
-
-

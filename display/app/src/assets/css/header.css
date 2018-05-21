@@ -25,7 +25,7 @@
   width: 300px;
   max-width: 300px;
   align-content: center;
-  margin-left: 16px;
+  padding-left: 16px;
   display: grid;
   grid-template-columns: auto auto;
   border-right: 1px solid rgba(234, 234, 234, 1);
