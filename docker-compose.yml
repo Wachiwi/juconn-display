@@ -1,0 +1,6 @@
+version: 2
+services:
+  display:
+    build: ./display
+  main:
+    build: ./backend

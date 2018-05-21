@@ -1,0 +1,47 @@
+.app-footer {
+  height: 40px;
+  max-height: 40px;
+  background-color: rgba(72, 72, 72, 1);
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: space-between;
+  padding: 0;
+}
+
+.app-footer .powered-by {
+  align-self: center;
+  grid-column: 1;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 1);
+}
+
+.app-footer .powered-by img.logo {
+  margin-left: 16px;
+  vertical-align: middle;
+  height: 34px;
+  width: 34px;
+}
+
+.app-footer .powered-by .desc-text {
+  color: rgba(255, 255, 255, 1);
+  font-size: 11px;
+  margin-left: 5px;
+}
+
+.app-footer .actions {
+  grid-column: 2;
+  display: inline-grid;
+  justify-items: center;
+}
+
+.app-footer .actions .action {
+  width: 64px;
+  text-align: center;
+  align-self: center;
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.app-footer .actions .action img.action-icon {
+  width: 24px;
+
+}

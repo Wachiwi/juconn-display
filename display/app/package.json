@@ -11,23 +11,31 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "electron": "URL_LAUNCHER_NODE=1 electron ."
+    "electron": "URL_LAUNCHER_NODE=1 electron .",
+    "relay": "relay-compiler --src ./src --schema ./schema.graphql --extensions js jsx"
   },
   "dependencies": {
+    "@material-ui/core": "^1.0.0-rc.1",
     "electron": "^2.0.0",
     "electron-rebuild": "^1.7.3",
     "node-sass": "^4.9.0",
     "react": "16.3.2",
-    "react-dom": "16.3.2"
+    "react-dom": "16.3.2",
+    "react-relay": "^1.6.0",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2"
   },
   "jshintConfig": {
     "esversion": 6,
     "strict": true
   },
   "devDependencies": {
+    "babel-plugin-relay": "^1.6.0",
     "eslint": "^4.19.1",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.11.0",
-    "react-scripts": "1.1.4"
+    "graphql": "^0.13.2",
+    "react-scripts": "1.1.4",
+    "relay-compiler": "^1.6.0"
   }
 }

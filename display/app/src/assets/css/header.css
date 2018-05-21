@@ -1,0 +1,57 @@
+.app-header {
+  height: 77px;
+  max-height: 77px;
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: space-between;
+  background-color: rgba(255, 255, 255, 1);
+  border-bottom: 1px solid rgba(234, 234, 234, 1);
+  align-items: center;
+}
+
+.app-header .brand {
+  grid-column: 2;
+  margin-right: 16px;
+}
+
+.app-header .brand img.logo {
+  width: 54px;
+  height: 46px;
+  vertical-align: middle;
+}
+
+.app-header .room-info {
+  grid-column: 1;
+  width: 300px;
+  max-width: 300px;
+  align-content: center;
+  margin-left: 16px;
+  display: grid;
+  grid-template-columns: auto auto;
+  border-right: 1px solid rgba(234, 234, 234, 1);
+}
+
+.app-header .room-info .meta {
+  grid-column: 1;
+}
+
+.app-header .room-info .action {
+  grid-column: 2;
+  align-self: center;
+}
+
+.app-header .room-info .title {
+  font-weight: bold;
+  font-size: 16px;
+  color: rgba(72, 72, 72, 1);
+}
+
+.app-header .room-info .more div {
+  margin: -.8em auto;
+}
+
+.app-header .room-info .more * {
+  color: rgba(72, 72, 72, 0.5);
+  font-size: 10px;
+}
+
