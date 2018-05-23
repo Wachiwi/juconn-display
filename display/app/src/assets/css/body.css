@@ -12,4 +12,43 @@
   grid-column: 2;
   background-image: url('../img/bg2.jpg');
   background-size: contain;
+  padding: 16px;
 }
+
+.app-body .devices .title {
+  font-size: 16px;
+  color: white;
+  margin-bottom: 16px;
+}
+
+.app-body .devices .list .device-control {
+  background-color: white;
+  border-radius: 8px;
+  padding: 10px;
+  min-height: 32px;
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: space-between;
+  align-items: center;
+  margin: 3px auto;
+}
+
+.app-body .devices .list .device-control .title {
+  font-size: 15px;
+  color: rgba(72, 72, 72, 1);
+  line-height: 21px;
+  margin-left: 16px;
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+.app-body .devices .list .device-control .actions .action:not(:last-child) {
+  border-right: 1px solid rgba(234, 234, 234, 1);
+  padding-right: 10px;
+}
+
+.app-body .devices .list .device-control .actions .action {
+
+
+}
+
