@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
 
-import Header from "./header";
-import Footer from "./footer";
-import DeviceControl from "./device_control";
+import Header from "../components/header";
+import Footer from "../components/footer";
+import DeviceControl from "../components/device_control";
+import SceneControl from "../components/scene_control";
+import View from "../components/view";
 
 export default class Home extends Component {
   constructor() {
@@ -33,13 +35,9 @@ export default class Home extends Component {
     };
   }
 
-  render() {
-    return (
-      <div className="app">
-        <Header/>
-        <div className="app-body">
-          <div className="scenes">
-
+  /*
+  <div className="scenes">
+            <SceneControl/>
           </div>
           <div className="devices">
             <div className="title">
@@ -51,9 +49,17 @@ export default class Home extends Component {
               <DeviceControl/>
             </div>
           </div>
-        </div>
-        <Footer/>
-      </div>
+   */
+
+  render() {
+    return (
+      <View single={true}>
+          <div className="centered-container">
+            <p className="has-centered-text">
+              Bitte nehmen Sie eine Konfiguration unter <b>„Einstellungen“</b> vor
+            </p>
+          </div>
+      </View>
     );
   }
 

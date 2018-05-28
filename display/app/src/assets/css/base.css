@@ -14,5 +14,16 @@
 
 a {
   text-decoration: none;
-  text-align: right;
+}
+
+.has-centered-text{
+  text-align: center;
+}
+
+.switch-wrapper {
+  position: relative;
+}
+
+.switch-wrapper > div {
+  position: absolute;
 }

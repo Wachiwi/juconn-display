@@ -1,6 +1,15 @@
 .app-body {
   display: grid;
+}
+
+.app-body:not(.single) {
   grid-template-columns: 316px auto;
+}
+
+.app-body .centered-container {
+  display: grid;
+  align-content: center;
+  grid-template-columns: 100%;
 }
 
 .app-body .scenes {
@@ -20,6 +29,8 @@
   color: white;
   margin-bottom: 16px;
 }
+
+/* =================================================================================== */
 
 .app-body .devices .list .device-control {
   background-color: white;
@@ -52,3 +63,70 @@
 
 }
 
+/* =================================================================================== */
+
+.app-body .devices .list .scene-control {
+  background-color: white;
+  border-radius: 8px;
+  padding: 10px;
+  min-height: 120px;
+  display: grid;
+  margin: 3px auto;
+  grid-template-rows: 21px auto;
+
+}
+
+.app-body .devices .list .scene-control .scene-header {
+  grid-row: 1;
+  font-size: 15px;
+  color: rgba(72, 72, 72, 1);
+  line-height: 21px;
+  margin-left: 16px;
+  font-weight: bold;
+  margin-bottom: 0;
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.app-body .devices .list .scene-control .scene-header .scene-title {
+  grid-column: 1;
+}
+.app-body .devices .list .scene-control .scene-header .action {
+  grid-column: 2;
+}
+
+.app-body .devices .list .scene-control .scene-devices {
+  grid-row: 2;
+}
+
+.circle {
+  height: 13px;
+  width: 13px;
+  min-height: 13px;
+  min-width: 13px;
+  border-radius: 50%;
+  border: 1px solid rgba(72, 72, 72, 0.3);
+}
+
+.yellow.circle {
+  background-image: -webkit-linear-gradient(-217deg, rgba(255, 246, 183, 1) 0%, rgba(255, 249, 133, 1) 100%);
+  background-image: -moz-linear-gradient(-217deg, rgba(255, 246, 183, 1) 0%, rgba(255, 249, 133, 1) 100%);
+  background-image: -o-linear-gradient(-217deg, rgba(255, 246, 183, 1) 0%, rgba(255, 249, 133, 1) 100%);
+  background-image: linear-gradient(-217deg, rgba(255, 246, 183, 1) 0%, rgba(255, 249, 133, 1) 100%);
+}
+
+.blue.circle {
+  background-image: -webkit-linear-gradient(-217deg, rgba(183, 233, 255, 1) 0%, rgba(133, 216, 255, 1) 100%);
+  background-image: -moz-linear-gradient(-217deg, rgba(183, 233, 255, 1) 0%, rgba(133, 216, 255, 1) 100%);
+  background-image: -o-linear-gradient(-217deg, rgba(183, 233, 255, 1) 0%, rgba(133, 216, 255, 1) 100%);
+  background-image: linear-gradient(-217deg, rgba(183, 233, 255, 1) 0%, rgba(133, 216, 255, 1) 100%);
+}
+
+.orange.circle {
+  background-image: -webkit-linear-gradient(-217deg, rgba(255, 222, 183, 1) 0%, rgba(255, 186, 133, 1) 100%);
+  background-image: -moz-linear-gradient(-217deg, rgba(255, 222, 183, 1) 0%, rgba(255, 186, 133, 1) 100%);
+  background-image: -o-linear-gradient(-217deg, rgba(255, 222, 183, 1) 0%, rgba(255, 186, 133, 1) 100%);
+  background-image: linear-gradient(-217deg, rgba(255, 222, 183, 1) 0%, rgba(255, 186, 133, 1) 100%);
+}
