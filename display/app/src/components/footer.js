@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Route, Link, Switch} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types'
 import {withRouter} from "react-router";
 
@@ -13,11 +13,11 @@ class Footer extends Component {
   }
 
   render() {
-    const { router, params, location, routes } = this.props
+    const {location} = this.props
     return (
       <div className="app-footer">
         <div className="powered-by">
-        <img src={juconn_logo} className="logo" alt="logo"/>
+          <img src={juconn_logo} className="logo" alt="logo"/>
           <span className="desc-text">
           powered by Juconn
           </span>
@@ -31,4 +31,5 @@ class Footer extends Component {
     );
   }
 }
+
 export default withRouter(Footer)

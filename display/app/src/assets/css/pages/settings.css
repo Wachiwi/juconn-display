@@ -1,0 +1,36 @@
+#settings {
+  justify-self: center;
+  margin-top: 33px;
+  width: 480px;
+}
+
+#settings h1 {
+  font-size: 16px;
+  color: rgba(72, 72, 72, 1);
+  font-weight: 500;
+}
+
+#settings .input label {
+  font-size: 10px;
+  color: rgba(72, 72, 72, 1);
+  text-transform: uppercase;
+}
+
+#settings .input label.required:after {
+  content: '*';
+}
+
+#settings .input input {
+  border: 1px solid rgba(208, 208, 208, 1);
+  border-radius: 4px;
+  height: 37px;
+  width: 100%;
+  padding: 5px;
+  padding-left: 16px;
+  font-size: 10px;
+}
+
+#settings #mandatory-hint {
+  margin: 16px auto 16px auto;
+  font-size: 9px;
+}

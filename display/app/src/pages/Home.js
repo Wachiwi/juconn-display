@@ -1,9 +1,5 @@
 import React, {Component} from 'react';
 
-import Header from "../components/header";
-import Footer from "../components/footer";
-import DeviceControl from "../components/device_control";
-import SceneControl from "../components/scene_control";
 import View from "../components/view";
 
 export default class Home extends Component {
@@ -36,19 +32,7 @@ export default class Home extends Component {
   }
 
   /*
-  <div className="scenes">
-            <SceneControl/>
-          </div>
-          <div className="devices">
-            <div className="title">
-              Einzelsteuerung
-            </div>
-            <div className="list">
-              <DeviceControl/>
-              <DeviceControl/>
-              <DeviceControl/>
-            </div>
-          </div>
+y
    */
 
   render() {

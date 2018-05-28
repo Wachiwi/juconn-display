@@ -5,7 +5,7 @@
   "main": "main.js",
   "homepage": "./",
   "scripts": {
-    "dev": "react-scripts start & URL_LAUNCHER_NODE=1 URL_LAUNCHER_URL=http://localhost:3000 NODE_ENV=development electron .",
+    "dev": "concurrently \"react-scripts start\" \"URL_LAUNCHER_NODE=1 URL_LAUNCHER_URL=http://localhost:3000 NODE_ENV=development electron .\"",
     "lint": "eslint .",
     "start": "URL_LAUNCHER_NODE=1 NODE_ENV=production startx ./node_modules/electron/dist/electron .",
     "build": "react-scripts build",
@@ -25,7 +25,8 @@
     "react-relay": "^1.6.0",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
-    "react-router-transition": "^1.2.1"
+    "react-router-transition": "^1.2.1",
+    "resin-sdk": "^8.2.1"
   },
   "jshintConfig": {
     "esversion": 6,
@@ -33,6 +34,7 @@
   },
   "devDependencies": {
     "babel-plugin-relay": "^1.6.0",
+    "concurrently": "^3.5.1",
     "electron-prebuilt-compile": "^2.0.0",
     "eslint": "^4.19.1",
     "eslint-config-airbnb-base": "^12.1.0",

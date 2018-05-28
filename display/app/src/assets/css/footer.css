@@ -51,5 +51,10 @@
 .app-footer .actions .active.action {
   height: calc(100% - 4px);
   border-bottom: 4px solid rgba(255, 127, 75, 1);
+  background-color: rgba(64, 64, 64, 0.5);
+}
+
+.app-footer .actions .active.action img.action-icon {
+  margin-top: 4px
 }
 

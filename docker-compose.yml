@@ -2,5 +2,7 @@ version: 2
 services:
   display:
     build: ./display
+    labels:
+      io.resin.features.resin-api: '1'
   main:
     build: ./backend

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Route, Link, Switch} from 'react-router-dom';
-import { AnimatedSwitch, AnimatedRoute } from 'react-router-transition';
+
 
 import './App.css';
 import Settings from "./pages/Settings";

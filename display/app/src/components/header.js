@@ -16,8 +16,11 @@ class Header extends Component {
   }
 
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    const {location, history } = this.props
+    this.location = location
+    this.history = history
 
     this.state = {
       brand: (this.props === undefined || this.props.brandImage === undefined ? logo : this.props.brandImage)
@@ -45,20 +48,35 @@ class Header extends Component {
 
   settingsTitle() {
     return (
-      <Link to='/' className="room-info">
-        <h1 className="title"><i className="fas fa-chevron-left"></i>&nbsp;Einstellungen</h1>
-      </Link>
+      <a className="room-info" onClick={this.history.goBack}>
+        <div className="action">
+          <i className="fas fa-2x fa-chevron-left"></i>
+        </div>
+        <div className="meta">
+          <h1 className="title">Einstellungen</h1>
+          <div className="more">
+            <div>Nehmen Sie hier Einstellungen für das Display vor.</div>
+          </div>
+        </div>
+
+      </a>
     );
   }
 
   homeTitle() {
     return (
-      <div className="room-info">
-      </div>
+      <Link to='/rooms' className="room-info">
+        <div className="meta">
+          <h1 className="title">Kein Raum ausgewählt</h1>
+          <div className="more">
+            <div>Bitte hier tippen um einen Raum auszuwählen.</div>
+          </div>
+        </div>
+      </Link>
     );
   }
 
-  headerSwitcher(route) {
+  headerSwitcher(route, params) {
     if (route === '/') {
       return this.homeTitle()
     } else if (route === '/settings') {
@@ -67,10 +85,10 @@ class Header extends Component {
   }
 
   render() {
-    const { router, params, location, routes } = this.props
+    const {params, location} = this.props
     return (
       <div className="app-header">
-        {this.headerSwitcher(location.pathname)}
+        {this.headerSwitcher(this.location.pathname, params)}
         <Link to="/" className="brand">
           <img src={this.state.brand} className="logo" alt="logo"/>
         </Link>
