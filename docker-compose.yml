@@ -5,5 +5,3 @@ services:
     privileged: true
     labels:
       io.resin.features.resin-api: '1'
-  main:
-    build: ./backend
