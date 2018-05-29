@@ -46,6 +46,23 @@ class Header extends Component {
     );
   }
 
+  roomsTitle() {
+    return (
+      <Link to='/' className="room-info">
+        <div className="action">
+          <i className="fas fa-2x fa-chevron-left"></i>
+        </div>
+        <div className="meta">
+          <h1 className="title">Verfügbare Räume</h1>
+          <div className="more">
+            <div>Wählen Sie einen anzuzeigenden Raum aus.</div>
+          </div>
+        </div>
+
+      </Link>
+    );
+  }
+
   settingsTitle() {
     return (
       <a className="room-info" onClick={this.history.goBack}>
@@ -77,10 +94,10 @@ class Header extends Component {
   }
 
   headerSwitcher(route, params) {
-    if (route === '/') {
-      return this.homeTitle()
-    } else if (route === '/settings') {
-      return this.settingsTitle()
+    switch (route) {
+      case '/': return this.homeTitle()
+      case '/settings': return this.settingsTitle()
+      case '/rooms': return this.roomsTitle()
     }
   }
 

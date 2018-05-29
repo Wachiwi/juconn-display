@@ -1,7 +1,12 @@
 const electron = require('electron');
 const path = require('path');
 
-const { app, BrowserWindow } = electron;
+const { app, BrowserWindow, ipcMain } = electron;
+
+const resin = require('resin-sdk');
+
+// ToDo: Fix undefined auth module
+// resin.auth.loginWithToken(process.env.RESIN_API_KEY);
 
 // simple parameters initialization
 const electronConfig = {
@@ -72,3 +77,19 @@ app.on('ready', () => {
   // the big red button, here we go
   window.loadURL(electronConfig.URL_LAUNCHER_URL);
 });
+
+ipcMain.on('save-settings-for', (event, arg) => {
+  // ToDo: Try to save the passed arguments as env vars inside the device (esp. for the service)
+  /*
+  for(k in arg) {
+    if (arg.hasOwnProperty(k)) {
+      resin.models.environmentVariables.device.create(process.env.RESIN_DEVICE_UUID,
+                                                      `SETTINGS_${k.toUpperCase()}`,
+                                                      arg[k]);
+    }
+  }
+  */
+
+  console.log(arg);
+  // event.returnValue = 'lulz'
+})

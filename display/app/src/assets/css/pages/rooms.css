@@ -1,0 +1,46 @@
+.app-body #rooms {
+  display: grid;
+  max-width: 480px !important;
+  width: 480px;
+  align-content: unset;
+  justify-self: center;
+  margin-top: 16px;
+}
+
+.app-body #rooms .room {
+  background-color: white;
+  border-radius: 8px;
+  padding: 10px;
+  min-height: 30px;
+  max-height: 50px;
+  margin: 3px auto;
+  border: 1px solid rgba(234, 234, 234, 1);
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.app-body #rooms .room .meta {
+  display: grid;
+  grid-template-rows: repeat(2, auto);
+  align-self: center;
+
+}
+
+.app-body #rooms .room .title {
+  font-size: 15px;
+  color: rgba(72, 72, 72, 1);
+  line-height: 21px;
+  margin-left: 16px;
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+.app-body #rooms .room .more {
+  margin-left: 16px;
+}
+.app-body #rooms .room .last-seen {
+  margin-right: 16px;
+}
