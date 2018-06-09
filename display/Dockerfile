@@ -1,5 +1,8 @@
 FROM resin/raspberrypi3-node:8
 
+RUN apt-get update && apt-get install -y apt-transport-https && curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - \
+    && echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+
 # Install other apt deps
 RUN apt-get update && apt-get install -y \
       apt-utils \
@@ -9,6 +12,7 @@ RUN apt-get update && apt-get install -y \
       xserver-xorg-video-fbdev \
       xorg \
       libdbus-1-dev \
+      libgtk2.0-0 \
       libgtk-3-0 \
       libnotify-dev \
       libgnome-keyring-dev \
@@ -23,7 +27,8 @@ RUN apt-get update && apt-get install -y \
       libsmbclient \
       libssh-4 \
       fbset \
-      libexpat-dev && rm -rf /var/lib/apt/lists/*
+      libexpat-dev \
+      yarn && rm -rf /var/lib/apt/lists/*
 
 # Set Xorg and FLUXBOX preferences
 RUN mkdir ~/.fluxbox
@@ -37,17 +42,18 @@ WORKDIR /usr/src/app
 
 # Move package.json to filesystem
 COPY ./app/package.json ./
+COPY ./app/yarn.lock ./
 
 # Install npm modules for the application
 # Install dev deps so we can build app
-RUN JOBS=MAX npm install --unsafe-perm \
+RUN JOBS=MAX yarn install --unsafe-perm \
 && node_modules/.bin/electron-rebuild
 
 # Move app to filesystem
 COPY ./app ./
 
 # Build react app
-RUN JOBS=MAX npm run build
+RUN JOBS=MAX yarn build
 
 ## uncomment if you want systemd
 ENV INITSYSTEM on

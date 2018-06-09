@@ -16,16 +16,17 @@
   },
   "dependencies": {
     "@material-ui/core": "^1.0.0-rc.1",
-    "electron": "^2.0.0",
-    "electron-rebuild": "^1.7.3",
-    "moment": "^2.22.1",
+    "electron": "1.7.13",
+    "electron-rebuild": "1.7.2",
+    "lockfile": "^1.0.4",
     "node-sass": "^4.9.0",
     "react": "16.3.2",
     "react-dom": "16.3.2",
-    "react-motion": "^0.5.2",
     "react-relay": "^1.6.0",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
+
+    "moment": "^2.22.1",
     "react-router-transition": "^1.2.1",
     "resin-sdk": "^8.2.1"
   },
