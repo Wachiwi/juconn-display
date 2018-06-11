@@ -41,8 +41,8 @@ RUN echo "#!/bin/bash" > /etc/X11/xinit/xserverrc \
 WORKDIR /usr/src/app
 
 # Move package.json to filesystem
-COPY ./app/package.json ./
-COPY ./app/yarn.lock ./
+COPY ./package.json ./
+COPY ./yarn.lock ./
 
 # Install npm modules for the application
 # Install dev deps so we can build app
@@ -50,7 +50,7 @@ RUN JOBS=MAX yarn install --unsafe-perm \
 && node_modules/.bin/electron-rebuild
 
 # Move app to filesystem
-COPY ./app ./
+COPY . .
 
 # Build react app
 RUN JOBS=MAX yarn build

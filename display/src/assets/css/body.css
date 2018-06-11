@@ -1,0 +1,19 @@
+@import "pages/settings.css";
+@import "pages/rooms.css";
+@import "pages/room.css";
+
+
+.app-body {
+  display: grid;
+}
+
+.app-body:not(.single) {
+  grid-template-columns: 316px auto;
+}
+
+.app-body .centered-container {
+  display: grid;
+  align-content: center;
+  grid-template-columns: 100%;
+  justify-content: center;
+}

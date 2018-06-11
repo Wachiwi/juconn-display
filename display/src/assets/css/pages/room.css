@@ -1,22 +1,3 @@
-@import "pages/settings.css";
-@import "pages/rooms.css";
-
-
-.app-body {
-  display: grid;
-}
-
-.app-body:not(.single) {
-  grid-template-columns: 316px auto;
-}
-
-.app-body .centered-container {
-  display: grid;
-  align-content: center;
-  grid-template-columns: 100%;
-  justify-content: center;
-}
-
 .app-body .scenes {
   grid-column: 1;
   margin-left: 16px;
@@ -24,8 +5,8 @@
 
 .app-body .devices {
   grid-column: 2;
-  background-image: url('../img/bg2.jpg');
-  background-size: contain;
+  background-image: url('../../img/bg.svg');
+  background-size: cover;
   padding: 16px;
 }
 

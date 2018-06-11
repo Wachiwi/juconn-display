@@ -39,7 +39,7 @@ export default class Index extends Component {
             ) :
               this.state.rooms.map((room) => {
               return (
-                <Link to={`/room/${room.id}`} className='room'>
+                <Link to={`/rooms/${room.id}`} className='room' key={room.id}>
                   <div className="meta">
                     <h1 className="title">{room.name}</h1>
                     <div className="more">

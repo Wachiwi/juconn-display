@@ -2,39 +2,16 @@ import React, {Component} from 'react';
 import {FormControlLabel, Switch} from "@material-ui/core";
 
 export default class DeviceControl extends Component {
-  constructor() {
-    super();
-    this.state = {
-      elements: [{
-        icon: "None",
-        name: "Test",
-        description: "Test123",
-        active: true
-      }, {
-        icon: "None",
-        name: "Test",
-        description: "Test123",
-      }, {
-        icon: "None",
-        name: "Test",
-        description: "Test123",
-      }, {
-        icon: "None",
-        name: "Test",
-        description: "Test123",
-      }, {
-        icon: "None",
-        name: "Test",
-        description: "Test123",
-      }],
-    };
+  constructor(props) {
+    super(props);
+    this.device = this.props.device;
   }
 
   render() {
     return (
       <div className="device-control">
         <span className="title">
-          Lampe Vorne
+          {this.device.name}
         </span>
         <div className="actions">
           <FormControlLabel

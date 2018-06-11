@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Route, Link, Switch} from 'react-router-dom';
+import {Route, Switch} from 'react-router-dom';
 
 
 import './App.css';
@@ -19,7 +19,7 @@ class App extends Component {
       <Switch>
         <Route exact path="/" component={Home}/>
         <Route path="/settings" component={Settings}/>
-        <Route path="/rooms" component={Rooms}/>
+        <Route exact  path="/rooms" component={Rooms}/>
         <Route path="/rooms/:roomID" component={Room}/>
       </Switch>
     );

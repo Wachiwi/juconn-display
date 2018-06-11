@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Route, Link} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 import PropTypes from 'prop-types'
 import {withRouter} from "react-router";
@@ -98,11 +98,14 @@ class Header extends Component {
       case '/': return this.homeTitle()
       case '/settings': return this.settingsTitle()
       case '/rooms': return this.roomsTitle()
+      default:
+        if(route.match(/\/room\/?/) !== null)
+          return this.roomInfo()
     }
   }
 
   render() {
-    const {params, location} = this.props
+    const {params} = this.props
     return (
       <div className="app-header">
         {this.headerSwitcher(this.location.pathname, params)}
