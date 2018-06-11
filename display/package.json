@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@material-ui/core": "^1.0.0-rc.1",
-    "electron": "^2.0.2",
+    "electron": "1.7.13",
     "electron-rebuild": "^1.7.3",
     "lockfile": "^1.0.4",
     "moment": "^2.22.1",

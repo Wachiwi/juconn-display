@@ -13,6 +13,7 @@ RUN apt-get update && apt-get install -y \
       xorg \
       libdbus-1-dev \
       libgtk2.0-0 \
+      libgtk2.0-dev \
       libgtk-3-0 \
       libnotify-dev \
       libgnome-keyring-dev \
