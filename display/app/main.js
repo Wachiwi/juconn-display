@@ -22,6 +22,7 @@ const electronConfig = {
   URL_LAUNCHER_URL: process.env.URL_LAUNCHER_URL || `file:///${path.join(__dirname, 'build', 'index.html')}`,
   URL_LAUNCHER_ZOOM: parseFloat(process.env.URL_LAUNCHER_ZOOM || 1.0),
   URL_LAUNCHER_OVERLAY_SCROLLBARS: process.env.URL_LAUNCHER_CONSOLE === '1' ? 1 : 0,
+  DISABLE_HARDWARE_ACCELERATION: process.env.DISABLE_HARDWARE_ACCELERATION === '1' ? 1 : 0,
 };
 
 // enable touch events if your device supports them
@@ -31,6 +32,10 @@ if (electronConfig.URL_LAUNCHER_TOUCH) {
 // simulate touch events - might be useful for touchscreen with partial driver support
 if (electronConfig.URL_LAUNCHER_TOUCH_SIMULATE) {
   app.commandLine.appendSwitch('--simulate-touch-screen-with-mouse');
+}
+
+if (electronConfig.DISABLE_HARDWARE_ACCELERATION) {
+  app.disableHardwareAcceleration();
 }
 
 if (process.env.NODE_ENV === 'development') {
