@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Route, Switch} from 'react-router-dom';
+import {Redirect, Route, Switch} from 'react-router-dom';
 
 
 import './App.css';
@@ -21,6 +21,7 @@ class App extends Component {
         <Route path="/settings" component={Settings}/>
         <Route exact  path="/rooms" component={Rooms}/>
         <Route path="/rooms/:roomID" component={Room}/>
+        <Route render={() => {return <Redirect to="/" />}} />
       </Switch>
     );
   }

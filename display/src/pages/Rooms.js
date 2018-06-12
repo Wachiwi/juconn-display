@@ -3,8 +3,10 @@ import React, {Component} from 'react';
 import View from "../components/view";
 import {Link} from "react-router-dom";
 
-var moment = require('moment');
-moment.locale('de')
+import moment from 'moment';
+import 'moment/locale/de';
+
+moment.locale('de');
 
 export default class Index extends Component {
 
