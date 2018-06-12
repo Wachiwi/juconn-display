@@ -21,7 +21,7 @@ class App extends Component {
         <Route path="/settings" component={Settings}/>
         <Route exact  path="/rooms" component={Rooms}/>
         <Route path="/rooms/:roomID" component={Room}/>
-        <Route render={() => {return <Redirect to="/" />}} />
+
       </Switch>
     );
   }
