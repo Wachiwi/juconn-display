@@ -24,6 +24,7 @@
   padding: 10px;
   min-height: 32px;
   display: grid;
+  grid-template-areas: "title actions" "extra extra";
   grid-template-columns: auto auto;
   justify-content: space-between;
   align-items: center;
@@ -31,6 +32,7 @@
 }
 
 .app-body .devices .list .device-control .title {
+  grid-area: title;
   font-size: 15px;
   color: rgba(72, 72, 72, 1);
   line-height: 21px;
@@ -39,14 +41,39 @@
   margin-bottom: 0;
 }
 
+.app-body .devices .list .device-control .actions{
+  grid-area: actions;
+}
+
+.app-body .devices .list .device-control .actions div {
+  display: inline-block;
+}
+
+
+.app-body .devices .list .device-control .actions .action.transparent{
+  opacity: 0.3;
+}
+
 .app-body .devices .list .device-control .actions .action:not(:last-child) {
   border-right: 1px solid rgba(234, 234, 234, 1);
   padding-right: 10px;
 }
 
 .app-body .devices .list .device-control .actions .action {
+  margin-right: 16px;
+}
 
+.app-body .devices .list .device-control .extra{
+  grid-area: extra;
+  justify-self: center;
+}
 
+.app-body .devices .list .device-control .extra.slider{
+  width: 80%;
+}
+
+.app-body .devices .list .device-control .extra.slider .label.right{
+  float: right;
 }
 
 /* =================================================================================== */
@@ -87,13 +114,19 @@
   grid-row: 2;
 }
 
+.app-body .devices .list .device-control .actions .action span{
+  font-size: 12px;
+  color: rgba(144, 144, 144, 1);
+}
+
 .circle {
-  height: 13px;
-  width: 13px;
+  height: 26px;
+  width: 26px;
   min-height: 13px;
   min-width: 13px;
-  border-radius: 50%;
-  border: 1px solid rgba(72, 72, 72, 0.3);
+  border-radius: 26px;
+  border: 2px solid rgba(72, 72, 72, 0.3);
+
 }
 
 .yellow.circle {
@@ -101,6 +134,8 @@
   background-image: -moz-linear-gradient(-217deg, rgba(255, 246, 183, 1) 0%, rgba(255, 249, 133, 1) 100%);
   background-image: -o-linear-gradient(-217deg, rgba(255, 246, 183, 1) 0%, rgba(255, 249, 133, 1) 100%);
   background-image: linear-gradient(-217deg, rgba(255, 246, 183, 1) 0%, rgba(255, 249, 133, 1) 100%);
+  margin: 5px;
+  vertical-align: middle;
 }
 
 .blue.circle {
@@ -108,6 +143,7 @@
   background-image: -moz-linear-gradient(-217deg, rgba(183, 233, 255, 1) 0%, rgba(133, 216, 255, 1) 100%);
   background-image: -o-linear-gradient(-217deg, rgba(183, 233, 255, 1) 0%, rgba(133, 216, 255, 1) 100%);
   background-image: linear-gradient(-217deg, rgba(183, 233, 255, 1) 0%, rgba(133, 216, 255, 1) 100%);
+  margin: 5px;
 }
 
 .orange.circle {
@@ -115,4 +151,26 @@
   background-image: -moz-linear-gradient(-217deg, rgba(255, 222, 183, 1) 0%, rgba(255, 186, 133, 1) 100%);
   background-image: -o-linear-gradient(-217deg, rgba(255, 222, 183, 1) 0%, rgba(255, 186, 133, 1) 100%);
   background-image: linear-gradient(-217deg, rgba(255, 222, 183, 1) 0%, rgba(255, 186, 133, 1) 100%);
+  margin: 5px;
+  vertical-align: middle;
+}
+
+.MuiSwitch-colorPrimary-9.MuiSwitch-checked-8 + .MuiSwitch-bar-12{
+  background-color: rgba(255, 127, 75, 1)!important;
+
+}
+
+.MuiSwitch-icon-5.MuiSwitch-iconChecked-6,
+.MuiSlider-track-58.MuiSlider-trackBefore-59,
+.MuiSwitch-colorPrimary-9.MuiSwitch-checked-8 + .MuiSwitch-bar-12,
+.MuiButtonBase-root-23.MuiSlider-thumb-61{
+  background-color: rgba(255, 127, 75, 1)!important;
+}
+
+.MuiSlider-track-58.MuiSlider-trackAfter-60{
+  background-color: rgba(255, 191, 165, 1)!important;
+}
+
+.MuiSlider-root-57{
+  margin-bottom: 0!important;
 }
