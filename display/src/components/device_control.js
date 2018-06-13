@@ -17,7 +17,7 @@ export default class DeviceControl extends Component {
           <FormControlLabel
             control={<Switch color="primary"/>} label="Off" className="action"/>
           <FormControlLabel
-            control={<Switch color="primary"/>} label="Off" className="action"/>
+            control={<Switch checked={this.device.state.on} color="primary"/>} label={this.device.state.on?'On':'Off'} className="action"/>
         </div>
       </div>
     );

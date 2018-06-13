@@ -13,7 +13,7 @@ export default class Room extends Component {
         id: '',
         name: 'Lampe 1',
         description: 'LOLULUOLASD',
-        type: 'light_light',
+        type: 'light_rgbw',
         state: {
           on: false,
           brightness: 0.7
