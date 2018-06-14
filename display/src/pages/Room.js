@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import View from "../components/view";
 import DeviceControl from "../components/device_control";
+import SceneControl from "../components/scene_control";
 
 export default class Room extends Component {
 
@@ -22,7 +23,7 @@ export default class Room extends Component {
           color_temperature: null,
           effect: null
         }
-      },{
+      }, {
         id: '2009',
         name: 'Lampe Hinten',
         description: 'LOLULUOLASD',
@@ -35,12 +36,12 @@ export default class Room extends Component {
           color_temperature: null,
           effect: null
         }
-      },{
+      }, {
         id: '1337',
         name: 'Raum Temperatur',
         description: 'Temperatur im Konferenzraum 5',
         type: 'temperatur_controll',
-        state:{
+        state: {
           on: false,
           temperature: 20,
           minTemperature: 13,
@@ -52,20 +53,30 @@ export default class Room extends Component {
         }
       }
       ],
-      scene:[{
-        name:'Meeting Modus',
+      scenes: [{
+        name: 'Meeting Modus',
+        id: 9009,
         active: false,
-        devices:[{
-          id:'1234',
-          name:'Lampe 1',
+        devices: [{
+          id: '1234',
+          name: 'Lampe 1',
           type: 'light_rgbw',
-          currentState:{
-            on: false,
-          },
-          newState:{
-            on:true,
+          newState: {
+            on: true,
+            brightness: 0.3,
+            hue: null,
+            saturation: null,
+            color_temperature: null,
+            effect: null
           }
-        }, '2009', '1337']
+        }, {
+          id: '2009',
+          name: 'Lampe Hinten',
+          type: 'light_rgbw',
+          newState: {
+            on: false,
+          }
+        }]
       }]
     }
   }
@@ -75,7 +86,11 @@ export default class Room extends Component {
     return (
       <View single={true}>
         <div className='scenes'>
-
+          <div className='list'>
+            {this.state.scenes.map(scene => {
+              return <SceneControl key={scene.id} scene={scene}/>;
+            })}
+          </div>
         </div>
         <div className="devices">
           <div className="title">

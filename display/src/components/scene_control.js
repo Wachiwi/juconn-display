@@ -2,53 +2,36 @@ import React, {Component} from 'react';
 import {FormControlLabel, Switch} from "@material-ui/core";
 
 export default class SceneControl extends Component {
-  constructor() {
-    super();
-    this.state = {
-      elements: [{
-        icon: "None",
-        name: "Test",
-        description: "Test123",
-        active: true
-      }, {
-        icon: "None",
-        name: "Test",
-        description: "Test123",
-      }, {
-        icon: "None",
-        name: "Test",
-        description: "Test123",
-      }, {
-        icon: "None",
-        name: "Test",
-        description: "Test123",
-      }, {
-        icon: "None",
-        name: "Test",
-        description: "Test123",
-      }],
-    };
+  constructor(props) {
+    super(props);
+    this.state = this.props.scene;
+    console.log('scene!!!', this.state);
   }
+
+  onToggle=()=>{
+    this.setState({active: !this.state.active});
+  };
 
   render() {
     return (
-      <div className="scene-control">
+      <div className={["scene-control", this.state.active?'':'transparent'].join(' ')}>
         <div className="scene-header">
           <span className="scene-title">
-            Lampe Vorne
+            {this.state.name}
           </span>
           <FormControlLabel
-            control={<Switch color="primary"/>} label="Off" className="action"/>
+            control={<Switch color="primary" checked={this.state.active} onChange={this.onToggle}/>} label={this.state.active?'ON':'OFF'} className="action"/>
         </div>
         <div className="scene-devices">
-          <div className="scene-device">
-            <span className="yellow circle">&nbsp;</span>
-            Label
-          </div>
-          <FormControlLabel
-            control={<Switch color="primary"/>} label="Off" className="action"/>
-          <FormControlLabel
-            control={<Switch color="primary"/>} label="Off" className="action"/>
+          {this.state.devices.map(device => {
+            return (
+              <div key={device.id} className="scene-device">
+                <div className={['small', 'circle', device.newState.on? 'yellow':'gray'].join(' ')}/>
+                <div className='label'>{device.name}</div>
+              </div>
+            )
+          })}
+
         </div>
       </div>
     );

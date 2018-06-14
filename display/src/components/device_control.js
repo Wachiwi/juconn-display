@@ -6,7 +6,8 @@ export default class DeviceControl extends Component {
   constructor(props) {
     super(props);
     this.device = this.props.device;
-    this.state = this.device.state
+    this.scene = this.props.scene;
+    this.state = this.device.state;
   }
 
   onToggleDevice = () => {
@@ -19,7 +20,7 @@ export default class DeviceControl extends Component {
   renderLight_rgbw = () => {
     return (
       <div className="actions">
-        <div className={['action', this.state.on? '':'transparent'].join(' ')}>
+        <div className={['action', this.state.on ? '' : 'transparent'].join(' ')}>
           <span>{this.state.brightness * 100}%</span>
           <div className={'orange circle'}/>
         </div>
@@ -50,8 +51,6 @@ export default class DeviceControl extends Component {
           <span className='label right'>{this.state.maxTemperature} {this.state.unit.symbol}</span>
         </div>
       </React.Fragment>
-
-
     )
   };
 
