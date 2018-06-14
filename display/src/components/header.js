@@ -30,7 +30,10 @@ class Header extends Component {
 
   roomInfo(roomId) {
     return (
-    <div className="room-info">
+    <Link to={'/rooms'} className="room-info">
+      <div className="action">
+        <i className="fas fa-2x fa-chevron-left"></i>
+      </div>
       <div className="meta">
         <h1 className="title">Raum 2-U08</h1>
         <div className="more">
@@ -38,11 +41,7 @@ class Header extends Component {
           <div><b>Uhrzeit:</b> 17:26 Uhr</div>
         </div>
       </div>
-      <div className="action">
-        <FormControlLabel
-          control={<Switch color="primary"/>} label="Off"/>
-      </div>
-    </div>
+    </Link>
     );
   }
 
