@@ -25,7 +25,7 @@ export default class Settings extends Component {
       clearTimeout()
       setTimeout(this.saveFields, WAIT_INTERVAL)
     }
-  }
+  };
 
   handleOnChange = (event) => {
     this.setState({typing: true})
@@ -37,7 +37,7 @@ export default class Settings extends Component {
     console.log(event.target.name, event.target.value)
 
     // this.setState({[event.target.name]: event.target.value});
-  }
+  };
 
   render() {
     return (

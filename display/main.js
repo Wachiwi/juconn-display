@@ -2,11 +2,20 @@ const electron = require('electron');
 const path = require('path');
 
 const { app, BrowserWindow, ipcMain } = electron;
+const mqtt = require('mqtt');
 
 // const resin = require('resin-sdk');
 
+const mqqtconfig={
+  broker: process.env.MQTT_BROKER,
+  id: process.env.UUID,
+  name: process.env.NAME,
+};
+
+
 // ToDo: Fix undefined auth module
 // resin.auth.loginWithToken(process.env.RESIN_API_KEY);
+
 
 // simple parameters initialization
 const electronConfig = {
@@ -81,7 +90,42 @@ app.on('ready', () => {
 
   // the big red button, here we go
   window.loadURL(electronConfig.URL_LAUNCHER_URL);
+
+  //Connect to a broker and subscribe to some chancels!
+  setupMqtt();
+
 });
+
+function setupMqtt(){
+  console.log(`Conneting to ${mqqtconfig.broker} as ${mqqtconfig.name} with id ${mqqtconfig.id}`);
+  var client  = mqtt.connect(mqqtconfig.broker);
+  client.on('connect', function () {
+    client.subscribe(`/${mqqtconfig.id}`);
+    client.publish('register', JSON.stringify({id: mqqtconfig.id, name: mqqtconfig.name}),{qos: 2}, err=>{
+      if (err!==null){
+        //Logg it
+        console.log('FEHLER BEIM VERBINDEN!', err);
+        //Try again
+        setTimeout(setupMqtt(), 3000);
+      }
+      console.log('MQTT erfolgreich verbunden!')
+    });
+  });
+
+  client.on('reconnect', ()=>{
+    console.log('doing a reconnect!')
+  })
+
+  client.on('error', err=>{
+    console.log('MQTT Fehler: ', err);
+  })
+
+  client.on('message', function (topic, message) {
+    // message is Buffer
+    console.log(message.toString());
+    client.end()
+  })
+}
 
 ipcMain.on('save-settings-for', (event, arg) => {
   // ToDo: Try to save the passed arguments as env vars inside the device (esp. for the service)

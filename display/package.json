@@ -6,7 +6,7 @@
   "license": "MIT",
   "homepage": "./",
   "scripts": {
-    "dev": "react-scripts start & URL_LAUNCHER_NODE=1 URL_LAUNCHER_URL=http://localhost:3000 NODE_ENV=development electron .",
+    "dev": "concurrently \"react-scripts start\" \"URL_LAUNCHER_NODE=1 URL_LAUNCHER_URL=http://localhost:3000 NODE_ENV=development electron .\"",
     "lint": "eslint .",
     "start": "URL_LAUNCHER_NODE=1 NODE_ENV=production startx ./node_modules/electron/dist/electron .",
     "build": "react-scripts build",
@@ -27,6 +27,7 @@
     "react-router-dom": "^4.2.2"
   },
   "devDependencies": {
+    "concurrently": "^3.5.1",
     "eslint": "^4.19.1",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.11.0",
