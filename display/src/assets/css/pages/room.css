@@ -88,8 +88,8 @@
   grid-template-rows: 21px auto;
 }
 
-.app-body .scenes .list .scene-control.transparent {
-  opacity: 0.3;
+.app-body .scenes .list .scene-control.transparent div{
+  opacity: 0.6;
 }
 
 .app-body .scenes .list .scene-control .scene-header {
