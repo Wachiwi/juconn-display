@@ -5,7 +5,6 @@ export default class SceneControl extends Component {
   constructor(props) {
     super(props);
     this.state = this.props.scene;
-    console.log('scene!!!', this.state);
   }
 
   onToggle=()=>{
