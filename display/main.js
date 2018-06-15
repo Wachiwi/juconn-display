@@ -14,7 +14,7 @@ const mqqtconfig={
 
 // ToDo: Fix undefined auth module
 // resin.auth.loginWithToken(process.env.RESIN_API_KEY);
-
+let window;
 
 // simple parameters initialization
 const electronConfig = {
@@ -62,7 +62,7 @@ if (process.env.NODE_ENV === 'development') {
  */
 app.on('ready', () => {
   // here we actually configure the behavour of electronJS
-  const window = new BrowserWindow({
+  window = new BrowserWindow({
     width: electronConfig.URL_LAUNCHER_WIDTH,
     height: electronConfig.URL_LAUNCHER_HEIGHT,
     frame: !!(electronConfig.URL_LAUNCHER_FRAME),
@@ -93,7 +93,7 @@ app.on('ready', () => {
   //Connect to a broker and subscribe to some chancels!
   setupMqtt();
 
-  sendMessageToRenderer(window.webContents);
+  sendMessageToRenderer();
 
 
 });
@@ -102,8 +102,8 @@ function setupMqtt(){
   console.log(`Conneting to ${mqqtconfig.broker} as ${mqqtconfig.name} with id ${mqqtconfig.id}`);
   var client  = mqtt.connect(mqqtconfig.broker);
   client.on('connect', function () {
-    client.subscribe(`/${mqqtconfig.id}`);
-    client.publish('register', JSON.stringify({id: mqqtconfig.id, name: mqqtconfig.name}),{qos: 2}, err=>{
+    client.subscribe(`${mqqtconfig.id}/`);
+    client.publish('register', JSON.stringify({id: mqqtconfig.id, name: mqqtconfig.name, type: 'display'}),{qos: 2}, err=>{
       if (err!==null){
         //Logg it
         console.log('FEHLER BEIM VERBINDEN!', err);
@@ -123,15 +123,21 @@ function setupMqtt(){
   });
 
   client.on('message', function (topic, message) {
+    let m = JSON.parse(JSON.parse(message));
     // message is Buffer
-    console.log(message.toString());
-    client.end()
+    if(m.type==='REG_ACK'){
+      console.log('Erfolgreich Registriert!');
+    }else{
+      sendMessageToRenderer(topic, message);
+    }
+
+
   })
 }
 
-function sendMessageToRenderer(web){
-  console.log('going to send a msg!', web);
-  web.webContents.send('info' , {msg:'hello from main process'})
+function sendMessageToRenderer(topic, message){
+  console.log('going to send a msg!', topic, message);
+  window.webContents.send('mqtt', {topic: topic, message: message});
 }
 
 ipcMain.on('save-settings-for', (event, arg) => {

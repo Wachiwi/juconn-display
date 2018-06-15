@@ -6,8 +6,9 @@ import Settings from "./pages/Settings";
 import Rooms from "./pages/Rooms";
 import Home from "./pages/Home";
 import Room from "./pages/Room";
+import {DevicesProvider} from './store/devices'
 
-const {ipcRenderer} = window.require('electron');
+
 
 
 // https://github.com/electron/electron/issues/7300
@@ -15,22 +16,22 @@ const {ipcRenderer} = window.require('electron');
 // const electron = window.require('electron');
 
 
-ipcRenderer.on('info' , function(event , data){ console.log('INCOMEING MSG',data.msg) });
-
 class App extends Component {
 
-  constructor(){
+  constructor() {
     super();
   }
 
   render() {
     return (
-      <Switch>
-        <Route exact path="/" component={Home}/>
-        <Route path="/settings" component={Settings}/>
-        <Route exact  path="/rooms" component={Rooms}/>
-        <Route path="/rooms/:roomID" component={Room}/>
-      </Switch>
+      <DevicesProvider>
+        <Switch>
+          <Route exact path="/" component={Home}/>
+          <Route path="/settings" component={Settings}/>
+          <Route exact path="/rooms" component={Rooms}/>
+          <Route path="/rooms/:roomID" component={Room}/>
+        </Switch>
+      </DevicesProvider>
     );
   }
 }
