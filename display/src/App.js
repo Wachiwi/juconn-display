@@ -1,17 +1,21 @@
 import React, {Component} from 'react';
 import {Redirect, Route, Switch} from 'react-router-dom';
 
-
 import './App.css';
 import Settings from "./pages/Settings";
 import Rooms from "./pages/Rooms";
 import Home from "./pages/Home";
 import Room from "./pages/Room";
 
+const {ipcRenderer} = window.require('electron');
+
 
 // https://github.com/electron/electron/issues/7300
 // We don't want to bundle electron in the webpack process so we use it's globally exposed require method.
 // const electron = window.require('electron');
+
+
+ipcRenderer.on('info' , function(event , data){ console.log('INCOMEING MSG',data.msg) });
 
 class App extends Component {
 

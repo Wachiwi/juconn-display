@@ -12,7 +12,6 @@ const mqqtconfig={
   name: process.env.NAME,
 };
 
-
 // ToDo: Fix undefined auth module
 // resin.auth.loginWithToken(process.env.RESIN_API_KEY);
 
@@ -94,6 +93,9 @@ app.on('ready', () => {
   //Connect to a broker and subscribe to some chancels!
   setupMqtt();
 
+  sendMessageToRenderer(window.webContents);
+
+
 });
 
 function setupMqtt(){
@@ -108,23 +110,28 @@ function setupMqtt(){
         //Try again
         setTimeout(setupMqtt(), 3000);
       }
-      console.log('MQTT erfolgreich verbunden!')
+      console.log('MQTT erfolgreich verbunden!');
     });
   });
 
   client.on('reconnect', ()=>{
     console.log('doing a reconnect!')
-  })
+  });
 
   client.on('error', err=>{
     console.log('MQTT Fehler: ', err);
-  })
+  });
 
   client.on('message', function (topic, message) {
     // message is Buffer
     console.log(message.toString());
     client.end()
   })
+}
+
+function sendMessageToRenderer(web){
+  console.log('going to send a msg!', web);
+  web.webContents.send('info' , {msg:'hello from main process'})
 }
 
 ipcMain.on('save-settings-for', (event, arg) => {
