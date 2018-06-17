@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import View from "../components/view";
 import DeviceControl from "../components/device_control";
 import SceneControl from "../components/scene_control";
+import {DevicesContext} from '../store/devices'
 
 export default class Room extends Component {
 
@@ -84,25 +85,30 @@ export default class Room extends Component {
 
   render() {
     return (
-      <View single={true}>
-        <div className='scenes'>
-          <div className='list'>
-            {this.state.scenes.map(scene => {
-              return <SceneControl key={scene.id} scene={scene}/>;
-            })}
-          </div>
-        </div>
-        <div className="devices">
-          <div className="title">
-            Einzelsteuerung
-          </div>
-          <div className="list">
-            {this.state.devices.map(device => {
-              return <DeviceControl key={device.id} device={device}/>;
-            })}
-          </div>
-        </div>
-      </View>
+      <DevicesContext.Consumer>
+        {(context) =>
+          <View single={true}>
+            <div className='scenes'>
+              <div className='list'>
+                {this.state.scenes.map(scene => {
+                  return <SceneControl key={scene.id} scene={scene}/>;
+                })}
+              </div>
+            </div>
+            <div className="devices">
+              <div className="title">
+                Einzelsteuerung
+              </div>
+              <div className="list">
+                {context.state.devices !== null && context.state.devices.map((device) => {
+                  return <DeviceControl key={device.id} device={device} />;
+                })}
+              </div>
+            </div>
+          </View>
+        }
+      </DevicesContext.Consumer>
+
     );
   }
 

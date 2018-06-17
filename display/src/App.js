@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 import Room from "./pages/Room";
 import {DevicesProvider} from './store/devices'
 
+const {ipcRenderer} = window.require('electron');
 
 
 
@@ -20,6 +21,12 @@ class App extends Component {
 
   constructor() {
     super();
+  }
+
+
+  componentDidMount(){
+    console.log('Sending ready state to main process');
+    ipcRenderer.send('ready-state');
   }
 
   render() {

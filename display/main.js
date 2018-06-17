@@ -12,6 +12,9 @@ const mqqtconfig={
   name: process.env.NAME,
 };
 
+let messageQ=[];
+let readyState=false;
+
 // ToDo: Fix undefined auth module
 // resin.auth.loginWithToken(process.env.RESIN_API_KEY);
 let window;
@@ -98,9 +101,9 @@ app.on('ready', () => {
 
 });
 
+let client  = mqtt.connect(mqqtconfig.broker);
 function setupMqtt(){
   console.log(`Conneting to ${mqqtconfig.broker} as ${mqqtconfig.name} with id ${mqqtconfig.id}`);
-  var client  = mqtt.connect(mqqtconfig.broker);
   client.on('connect', function () {
     client.subscribe(`${mqqtconfig.id}/`);
     client.publish('register', JSON.stringify({id: mqqtconfig.id, name: mqqtconfig.name, type: 'display'}),{qos: 2}, err=>{
@@ -111,6 +114,7 @@ function setupMqtt(){
         setTimeout(setupMqtt(), 3000);
       }
       console.log('MQTT erfolgreich verbunden!');
+      setInterval(()=>client.publish(`${mqqtconfig.id}/alive`, '{"davidStinkt": true}'),10000);
     });
   });
 
@@ -123,22 +127,49 @@ function setupMqtt(){
   });
 
   client.on('message', function (topic, message) {
-    let m = JSON.parse(JSON.parse(message));
+    console.log('OMG ', message.toString());
+    let m = JSON.parse(message);
+    console.log('incomming mqtt msg', topic, JSON.stringify(m));
     // message is Buffer
     if(m.type==='REG_ACK'){
-      console.log('Erfolgreich Registriert!');
+      console.log('Erfolgreich Registriert!', m);
     }else{
-      sendMessageToRenderer(topic, message);
+      sendMessageToRenderer(topic, m);
     }
-
-
   })
 }
 
 function sendMessageToRenderer(topic, message){
-  console.log('going to send a msg!', topic, message);
-  window.webContents.send('mqtt', {topic: topic, message: message});
+
+  if(readyState){
+    //If the React is ready fire the messages!!!
+    window.webContents.send('mqtt', {topic: topic, message: message});
+  }else{
+    //Else save the messages
+    messageQ.push({topic: topic, message:message});
+  }
+
 }
+
+
+/**
+ * called if the react is ready
+ */
+ipcMain.on('ready-state', (event, arg) => {
+  console.log('Main: got ready state');
+  //Set state to rdy
+  readyState=true;
+  //Send the old messages
+  messageQ.forEach(m =>{
+    console.log('SENDING:', m.message);
+    sendMessageToRenderer(m.topic, m.message);
+  });
+});
+
+ipcMain.on('publish-mqtt', (event, arg) => {
+  console.log('Main: Publish mqtt form React app', `DDDD: '${arg}'`);
+  client.publish(arg.topic, JSON.stringify(arg.message));
+});
 
 ipcMain.on('save-settings-for', (event, arg) => {
   // ToDo: Try to save the passed arguments as env vars inside the device (esp. for the service)
