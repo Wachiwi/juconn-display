@@ -3,5 +3,9 @@ services:
   display:
     build: ./display
     privileged: true
+    environment:
+      MQTT_BROKER: 192.168.123.45
+      UUID: 82ecedf
+      NAME: display
     labels:
       io.resin.features.resin-api: '1'
