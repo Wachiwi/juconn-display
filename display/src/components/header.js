@@ -18,7 +18,7 @@ class Header extends Component {
 
   constructor(props) {
     super(props);
-    const {location, history } = this.props
+    const {location, history} = this.props
     this.location = location
     this.history = history
 
@@ -30,18 +30,19 @@ class Header extends Component {
 
   roomInfo(roomId) {
     return (
-    <Link to={'/rooms'} className="room-info">
-      <div className="action">
-        <i className="fas fa-2x fa-chevron-left"></i>
-      </div>
-      <div className="meta">
-        <h1 className="title">Raum 2-U08</h1>
-        <div className="more">
-          <div><b>Standort:</b> Garchin Lat Long</div>
-          <div><b>Uhrzeit:</b> 17:26 Uhr</div>
+      <div className="room-info">
+        <div className="meta">
+          <h1 className="title">Raum 2-U08</h1>
+          <div className="more">
+            <div><b>Standort:</b> Garching</div>
+            <div><b>Uhrzeit:</b> 17:26 Uhr</div>
+          </div>
+        </div>
+        <div className="action">
+          <FormControlLabel
+            control={<Switch checked={false} color="primary"/>} label="OFF"/>
         </div>
       </div>
-    </Link>
     );
   }
 
@@ -57,26 +58,44 @@ class Header extends Component {
             <div>Wählen Sie einen anzuzeigenden Raum aus.</div>
           </div>
         </div>
-
       </Link>
     );
   }
 
   settingsTitle() {
     return (
-      <a className="room-info" onClick={this.history.goBack}>
-        <div className="action">
-          <i className="fas fa-2x fa-chevron-left"></i>
-        </div>
-        <div className="meta">
-          <h1 className="title">Einstellungen</h1>
-          <div className="more">
-            <div>Nehmen Sie hier Einstellungen für das Display vor.</div>
+      <div className="head-line">
+        <a className="back" onClick={this.history.goBack}>
+          <div className="arrow">
+            <img src={require('../assets/img/icons/icon_chevron_left_dark.svg')} className="logo" alt="logo"/>
           </div>
+          <div className="description">
+            zurück
+          </div>
+        </a>
+        <div className="title">
+          Einstellungen
         </div>
-
-      </a>
+      </div>
     );
+  }
+
+  statisticTitle() {
+    return (
+      <div className="head-line">
+        <a className="back" onClick={this.history.goBack}>
+          <div className="arrow">
+            <img src={require('../assets/img/icons/icon_chevron_left_dark.svg')} className="logo" alt="logo"/>
+          </div>
+          <div className="description">
+            zurück
+          </div>
+        </a>
+        <div className="title">
+          Datenverlauf
+        </div>
+      </div>
+    )
   }
 
   homeTitle() {
@@ -94,11 +113,16 @@ class Header extends Component {
 
   headerSwitcher(route, params) {
     switch (route) {
-      case '/': return this.homeTitle()
-      case '/settings': return this.settingsTitle()
-      case '/rooms': return this.roomsTitle()
+      case '/':
+        return this.homeTitle()
+      case '/settings':
+        return this.settingsTitle()
+      case '/statistic':
+        return this.statisticTitle()
+      case '/rooms':
+        return this.roomsTitle()
       default:
-        if(route.match(/\/room\/?/) !== null)
+        if (route.match(/\/room\/?/) !== null)
           return this.roomInfo()
     }
   }

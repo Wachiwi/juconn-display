@@ -6,6 +6,7 @@ import Settings from "./pages/Settings";
 import Rooms from "./pages/Rooms";
 import Home from "./pages/Home";
 import Room from "./pages/Room";
+import Statistic from "./pages/Statistic"
 import {DevicesProvider} from './store/devices'
 
 const {ipcRenderer} = window.require('electron');
@@ -35,6 +36,7 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={Home}/>
           <Route path="/settings" component={Settings}/>
+          <Route path="/statistic" component={Statistic}/>
           <Route exact path="/rooms" component={Rooms}/>
           <Route path="/rooms/:roomID" component={Room}/>
         </Switch>

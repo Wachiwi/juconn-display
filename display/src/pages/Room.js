@@ -89,6 +89,9 @@ export default class Room extends Component {
         {(context) =>
           <View single={true}>
             <div className='scenes'>
+              <div>
+                Modi
+              </div>
               <div className='list'>
                 {this.state.scenes.map(scene => {
                   return <SceneControl key={scene.id} scene={scene}/>;

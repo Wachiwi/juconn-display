@@ -1,8 +1,9 @@
 .app-header {
-  height: 77px;
+  height: 60px;
+  max-width: 800px;
   max-height: 77px;
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: 90% auto;
   justify-content: space-between;
   background-color: rgba(255, 255, 255, 1);
   border-bottom: 1px solid rgba(234, 234, 234, 1);
@@ -19,6 +20,8 @@
   height: 46px;
   vertical-align: middle;
 }
+
+/*====================================================*/
 
 .app-header .room-info {
   grid-column: 1;
@@ -40,7 +43,6 @@
 
 .app-header .room-info .action {
   align-self: center;
-
 }
 
 .app-header .room-info .title {
@@ -61,4 +63,44 @@
 
 .app-header a:hover {
   cursor: pointer;
+}
+
+/*===========================================*/
+
+
+.app-header .head-line{
+  grid-column: 1;
+  display: grid;
+  width:100%;
+  grid-template-columns: auto auto;
+}
+
+.app-header .head-line .back{
+  grid-column: 1;
+  display: grid;
+  justify-content: left;
+  grid-template-columns: auto auto;
+}
+
+.app-header .head-line .back .arrow{
+  grid-column: 1;
+  align-self: center;
+  width:24px;
+  height: 24px;
+}
+
+.app-header .head-line .back .description{
+  grid-column: 2;
+  align-self: center;
+  color: rgba(72, 72, 72, 1);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.app-header .head-line .title{
+  grid-column: 2;
+  align-self: center;
+  font-size: 16px;
+  font-weight: bold;
+  color: rgba(72, 72, 72, 1);
 }

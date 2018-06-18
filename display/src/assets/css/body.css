@@ -11,6 +11,10 @@
   grid-template-columns: 316px auto;
 }
 
+.single.app-body {
+  justify-self: center;
+}
+
 .app-body .centered-container {
   display: grid;
   align-content: center;

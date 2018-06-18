@@ -1,5 +1,6 @@
 .app-footer {
   height: 40px;
+  max-width: 800px;
   max-height: 40px;
   background-color: rgba(72, 72, 72, 1);
   display: grid;
@@ -31,6 +32,7 @@
   grid-column: 2;
   display: inline-grid;
   justify-items: center;
+  grid-template-columns: repeat(2, 64px);
 }
 
 .app-footer .actions .action {

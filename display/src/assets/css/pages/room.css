@@ -1,6 +1,7 @@
 .app-body .scenes {
   grid-column: 1;
-  margin-left: 16px;
+  padding-left: 16px;
+  width: 300px;
 }
 
 .app-body .devices {
@@ -8,6 +9,7 @@
   background-image: url('../../img/bg.svg');
   background-size: cover;
   padding: 16px;
+  width: 500px;
 }
 
 .app-body .devices .title {

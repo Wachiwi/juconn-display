@@ -15,7 +15,7 @@ class Footer extends Component {
   }
 
   render() {
-    const {location} = this.props
+    const {location} = this.props;
     return (
       <div className="app-footer">
         <div className="powered-by">
@@ -23,6 +23,9 @@ class Footer extends Component {
           <img src={hsc_logo} className="logo" alt="logo"/>
         </div>
         <div className="actions">
+          <Link to='/statistic' className={`${location.pathname === '/statstic' ? 'active' : ''} action`}>
+            <img src={require('../assets/img/icons/Icon_graph.svg')} className="action-icon" alt=""/>
+          </Link>
           <Link to='/settings' className={`${location.pathname === '/settings' ? 'active' : ''} action`}>
             <img src={require('../assets/img/icons/settings.svg')} className="action-icon" alt=""/>
           </Link>

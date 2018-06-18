@@ -14,6 +14,7 @@ const mqqtconfig={
 
 let messageQ=[];
 let readyState=false;
+let client  = mqtt.connect(mqqtconfig.broker);
 
 // ToDo: Fix undefined auth module
 // resin.auth.loginWithToken(process.env.RESIN_API_KEY);
@@ -101,7 +102,6 @@ app.on('ready', () => {
 
 });
 
-let client  = mqtt.connect(mqqtconfig.broker);
 function setupMqtt(){
   console.log(`Conneting to ${mqqtconfig.broker} as ${mqqtconfig.name} with id ${mqqtconfig.id}`);
   client.on('connect', function () {
