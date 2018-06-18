@@ -19,17 +19,65 @@ export default class DeviceControl extends Component {
         message: {
           id: this.props.device.id,
           type: 'CMD',
-          state:{on: value}
+          state: {on: value}
         }
       })
   };
+
+  renderCircleColor = () => {
+
+    let h = this.props.device.state.hue / 180 / 360;
+    let s = this.props.device.state.saturation/255;
+    let v = this.props.device.state.brightness/255;
+
+    let r, g, b, i, f, p, q, t;
+    i = Math.floor(h * 6);
+    f = h * 6 - i;
+    p = v * (1 - s);
+    q = v * (1 - f * s);
+    t = v * (1 - (1 - f) * s);
+    switch (i % 6) {
+      case 0:
+        r = v, g = t, b = p;
+        break;
+      case 1:
+        r = q, g = v, b = p;
+        break;
+      case 2:
+        r = p, g = v, b = t;
+        break;
+      case 3:
+        r = p, g = q, b = v;
+        break;
+      case 4:
+        r = t, g = p, b = v;
+        break;
+      case 5:
+        r = v, g = p, b = q;
+        break;
+    }
+    r=Math.round(r*255)
+    g=Math.round(g*255)
+    b=Math.round(b*255)
+
+    console.log('FARBÄÄÄÄÄÖÖÖ',`rgb(${r},${g},${b})`)
+    return `rgb(${r},${g},${b})`;
+
+  };
+
+
+  function
+
+  HSVtoRGB(h, s, v) {
+
+  }
 
   renderLight_rgbw = () => {
     return (
       <div className="actions">
         <div className={['action', this.props.device.state.on ? '' : 'transparent'].join(' ')}>
           <span>{Math.round(this.props.device.state.brightness / 255 * 100)}%</span>
-          <div className={'orange circle'}/>
+          <div style={{backgroundColor: this.renderCircleColor()}} className={'circle'}/>
         </div>
         <FormControlLabel
           control={<Switch checked={this.props.device.state.on} onChange={this.onToggleDevice}
