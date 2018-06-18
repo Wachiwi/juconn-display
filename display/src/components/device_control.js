@@ -65,13 +65,6 @@ export default class DeviceControl extends Component {
 
   };
 
-
-  function
-
-  HSVtoRGB(h, s, v) {
-
-  }
-
   renderLight_rgbw = () => {
     return (
       <div className="actions">
@@ -79,6 +72,17 @@ export default class DeviceControl extends Component {
           <span>{Math.round(this.props.device.state.brightness / 255 * 100)}%</span>
           <div style={{backgroundColor: this.renderCircleColor()}} className={'circle'}/>
         </div>
+        <FormControlLabel
+          control={<Switch checked={this.props.device.state.on} onChange={this.onToggleDevice}
+                           className={'switch primary'}
+                           color="primary"/>} label={this.props.device.state.on ? 'ON' : 'OFF'} className="action"/>
+      </div>
+    );
+  };
+
+  renderLight_w = () => {
+    return (
+      <div className="actions">
         <FormControlLabel
           control={<Switch checked={this.props.device.state.on} onChange={this.onToggleDevice}
                            className={'switch primary'}
@@ -121,6 +125,10 @@ export default class DeviceControl extends Component {
         {
           this.props.device.model === 'LCT007' &&
           this.renderLight_rgbw()
+        }
+        {
+          this.props.device.model === 'LWB006' &&
+          this.renderLight_w()
         }
         {
           this.props.device.model === 'temperatur_controll' &&
