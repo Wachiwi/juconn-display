@@ -42,7 +42,7 @@ export default class Settings extends Component {
   render() {
     return (
       <View single={true}>
-        <div id="settings">
+        <div id="settings" className="centered-container">
           <h1>Gateway</h1>
           <div className="input">
             <label className="required">gateway id</label>

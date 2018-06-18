@@ -8,16 +8,18 @@
 }
 
 .app-body:not(.single) {
-  grid-template-columns: 316px auto;
+  grid-template-columns: 300px auto;
 }
 
 .single.app-body {
-  justify-self: center;
+  justify-self: left;
+  width:100%;
 }
 
 .app-body .centered-container {
   display: grid;
   align-content: center;
+  justify-self: center;
   grid-template-columns: 100%;
   justify-content: center;
 }

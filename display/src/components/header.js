@@ -83,14 +83,14 @@ class Header extends Component {
   statisticTitle() {
     return (
       <div className="head-line">
-        <a className="back" onClick={this.history.goBack}>
+        <Link className="back" to={'/rooms'}>
           <div className="arrow">
             <img src={require('../assets/img/icons/icon_chevron_left_dark.svg')} className="logo" alt="logo"/>
           </div>
           <div className="description">
             zurück
           </div>
-        </a>
+        </Link>
         <div className="title">
           Datenverlauf
         </div>

@@ -60,7 +60,7 @@ export default class Room extends Component {
         active: false,
         devices: [{
           id: '1234',
-          name: 'Lampe 1',
+          name: 'Hue color lamp 1',
           type: 'light_rgbw',
           newState: {
             on: true,
@@ -72,7 +72,7 @@ export default class Room extends Component {
           }
         }, {
           id: '2009',
-          name: 'Lampe Hinten',
+          name: 'Hue white lamp 1',
           type: 'light_rgbw',
           newState: {
             on: false,
@@ -87,7 +87,7 @@ export default class Room extends Component {
     return (
       <DevicesContext.Consumer>
         {(context) =>
-          <View single={true}>
+          <View >
             <div className='scenes'>
               <div>
                 Modi
@@ -111,7 +111,6 @@ export default class Room extends Component {
           </View>
         }
       </DevicesContext.Consumer>
-
     );
   }
 

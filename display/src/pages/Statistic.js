@@ -16,7 +16,9 @@ export default class Room extends Component {
   render() {
     return (
       <View single={true}>
+        <div className='centered-container'>
           <img width={577} height={290} src={require('../assets/img/fake_statistic.png')}/>
+        </div>
       </View>
     );
   }

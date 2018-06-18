@@ -23,7 +23,7 @@ class Footer extends Component {
           <img src={hsc_logo} className="logo" alt="logo"/>
         </div>
         <div className="actions">
-          <Link to='/statistic' className={`${location.pathname === '/statstic' ? 'active' : ''} action`}>
+          <Link to='/statistic' className={`${location.pathname === '/statistic' ? 'active' : ''} action`}>
             <img src={require('../assets/img/icons/Icon_graph.svg')} className="action-icon" alt=""/>
           </Link>
           <Link to='/settings' className={`${location.pathname === '/settings' ? 'active' : ''} action`}>
